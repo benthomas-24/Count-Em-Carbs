@@ -1,0 +1,523 @@
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 20px;
+    background-color: #0a192f; /* Dark blue background */
+    color: #e6f1ff; /* Light blue text for better contrast */
+}
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #172a45; /* Slightly lighter blue for container */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(100, 255, 255, 0.1); /* Neon-like glow */
+    border: 1px solid #64ffda; /* Neon-like border */
+}
+
+h1 {
+    text-align: center;
+    color: #64ffda; /* Neon-like blue for headings */
+}
+
+form {
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #8892b0; /* Lighter blue for labels */
+}
+
+input[type="text"],
+input[type="number"] {
+    width: 100%;
+    padding: 8px;
+    background-color: #0a192f; /* Dark blue for input backgrounds */
+    border: 1px solid #64ffda; /* Neon-like border for inputs */
+    border-radius: 4px;
+    color: #e6f1ff; /* Light blue text for inputs */
+}
+
+button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #64ffda; /* Neon-like blue for buttons */
+    color: #0a192f; /* Dark blue text on buttons for contrast */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button:hover {
+    background-color: #4cD6b0; /* Slightly darker on hover */
+}
+
+#results {
+    background-color: #1d3557; /* Slightly different blue for results */
+    padding: 15px;
+    border-radius: 4px;
+    border: 1px solid #64ffda; /* Neon-like border */
+}
+
+.hidden {
+    display: none;
+}
+
+#food-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+#food-list li {
+    background-color: #233554; /* Slightly lighter blue for list items */
+    margin-bottom: 5px;
+    padding: 5px 10px;
+    border-radius: 3px;
+    border: 1px solid #64ffda; /* Neon-like border */
+}
+
+.food-input {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.food-input input {
+    flex-grow: 1;
+}
+
+.food-input button {
+    width: auto;
+}
+
+/* Additional styles for better visibility */
+h2 {
+    color: #64ffda; /* Neon-like blue for subheadings */
+}
+
+#results p {
+    color: #8892b0; /* Lighter blue for result text */
+}
+
+#results span {
+    color: #64ffda; /* Neon-like blue for result values */
+    font-weight: bold;
+}
+
+.food-database-link {
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.button {
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: #64ffda;
+    color: #0a192f;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: bold;
+    text-align: center;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.button:hover {
+    background-color: transparent;
+    border: 2px solid #64ffda;
+    background-image: linear-gradient(
+            to right,
+            #ef5350, #f48fb1, #7e57c2, #2196f3, #26c6da, #43a047, #eeff41, #f9a825, #ff5722);
+    background-size: 200% auto;
+    animation: rainbow 3s linear infinite;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+.track-button {
+    background-color: #64ffda;
+    color: #0a192f;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.track-button:hover {
+    background-color: #4cD6b0;
+}
+
+#tracked-foods {
+    margin-top: 20px;
+    background-color: #233554;
+    padding: 15px;
+    border-radius: 4px;
+    border: 1px solid #64ffda;
+}
+
+#tracked-foods h2 {
+    color: #64ffda;
+    margin-top: 0;
+}
+
+#tracked-foods-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+#tracked-foods-list li {
+    background-color: #172a45;
+    margin-bottom: 5px;
+    padding: 5px 10px;
+    border-radius: 3px;
+}
+
+#total-tracked-carbs {
+    color: #64ffda;
+    font-weight: bold;
+}
+
+.tracking-status {
+    display: inline-block;
+    font-weight: bold;
+    color: #a5cb21;
+    overflow: hidden;
+    white-space: nowrap;
+    margin-left: 10px;
+}
+
+.tracking-status.show {
+    height: 20px; /* Adjust this value based on your font size */
+}
+.tracking-status span {
+    display: inline-block;
+    opacity: 0;
+    animation: flyIn 0.3s ease-out forwards, fadeOut 0.3s ease-in forwards 1.5s;
+}
+
+.tracking-status.animate span {
+    animation: ballDrop .3s forwards;
+}
+
+@keyframes flyIn {
+    0% {
+        transform: translate(50px, -50px);
+        opacity: 0;
+    }
+    100% {
+        transform: translate(0, 0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+.tracking-status span:nth-child(2) { animation-delay: 0.05s, 1.55s; }
+.tracking-status span:nth-child(3) { animation-delay: 0.1s, 1.6s; }
+.tracking-status span:nth-child(4) { animation-delay: 0.15s, 1.65s; }
+.tracking-status span:nth-child(5) { animation-delay: 0.2s, 1.7s; }
+.tracking-status span:nth-child(6) { animation-delay: 0.25s, 1.75s; }
+
+/* Remove these conflicting styles */
+/*
+.tracking-status {
+    margin-left: 10px;
+    font-weight: bold;
+    display: inline-block;
+    overflow: hidden;
+    height: 0;
+    transition: height 0.3s ease-out;
+}
+
+.tracking-status.show {
+    height: 20px;
+}
+
+.tracking-status span {
+    color: #a5cb21;
+    opacity: 0;
+    transform: translate(200px, -100px) scale(2);
+    display: inline-block;
+}
+
+.tracking-status.animate span {
+    animation: ballDrop .3s forwards;
+}
+*/
+
+.navigation-area {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    gap: 20px; /* Add some space between the button and text */
+}
+
+.button {
+    flex-shrink: 0; /* Prevent the button from shrinking */
+}
+
+.scroll-reminder {
+    font-weight: bold;
+    animation: slowBounce 2s ease-in-out infinite, rainbowText 10s linear infinite;
+    background-image: linear-gradient(to right, #ef5350, #f48fb1, #7e57c2, #2196f3, #26c6da, #43a047, #eeff41, #f9a825, #ff5722);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    background-size: 1000% 100%;
+    text-decoration: none;
+    cursor: pointer;
+    flex-grow: 1; /* Allow the text to take up remaining space */
+    text-align: center; /* Center the text */
+}
+
+
+@keyframes slowBounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes rainbowText {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 100% 50%;
+    }
+}
+
+@keyframes rainbow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* New styles for button hover effects */
+.food-input button,
+button,
+.track-button,
+.button {
+    background-color: transparent;
+    border: 2px solid #64ffda;
+    color: #64ffda;
+    transition: all 0.3s ease;
+    background-clip: padding-box;
+}
+
+.food-input button:hover,
+button:hover,
+.track-button:hover,
+.button:hover {
+    background-image: linear-gradient(
+            to right,
+            #ef5350, #f48fb1, #7e57c2, #2196f3, #26c6da, #43a047, #eeff41, #f9a825, #ff5722
+    );
+    background-size: 200% auto;
+    animation: rainbow 3s linear infinite;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    border-color: transparent;
+}
+
+body {
+    --scrollbar-width: 16px;
+    --scrollbar-shelved-width: 4px;
+    --scrollbar-track-color: rgba(128, 128, 128, 0.1);
+    --scrollbar-thumb-color: rgba(128, 128, 128, 0.5);
+}
+
+/* Webkit scrollbar styles */
+::-webkit-scrollbar {
+    width: var(--scrollbar-width);
+    transition: width 0.3s ease;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--scrollbar-track-color);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb-color);
+    border-radius: 4px;
+    border: 3px solid var(--scrollbar-track-color);
+    background-clip: padding-box;
+}
+
+/* Shelved state */
+body.shelve-scrollbar::-webkit-scrollbar {
+    width: var(--scrollbar-shelved-width);
+}
+
+body.shelve-scrollbar::-webkit-scrollbar-thumb {
+    border-width: 1px;
+}
+
+/* Animated gradient for thumb */
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+::-webkit-scrollbar-thumb {
+    background: #64ffda;
+    background-size: 300% 300%;
+    animation: gradientShift 6s ease infinite;
+}
+
+.tracked-food-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #172a45;
+    margin-bottom: 5px;
+    padding: 5px 10px;
+    border-radius: 3px;
+}
+
+.food-info {
+    flex-grow: 1;
+    margin-right: 10px;
+}
+
+.remove-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+}
+
+.remove-button:hover {
+    background-color: rgba(255, 0, 0, 0.1);
+}
+
+.remove-icon {
+    color: #ff4136;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.search-container {
+    position: relative;
+    width: 100%;
+}
+
+.food-suggestions {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    max-height: 200px;
+    overflow-y: auto;
+    background-color: #172a45;
+    border: 1px solid #64ffda;
+    border-top: none;
+    border-radius: 0 0 4px 4px;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    z-index: 1000;
+    display: none;
+}
+
+.food-suggestions li {
+    padding: 8px 12px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.food-suggestions li:hover {
+    background-color: #233554;
+}
+
+#food::placeholder {
+    color: #8892b0;
+    opacity: 0.7;
+}
+
+/* Update the existing .food-input styles */
+.food-input {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.food-input .search-container {
+    flex-grow: 1;
+}
+
+.food-input button {
+    width: 100%;
+}
+
+/* Add responsive design for larger screens */
+@media (min-width: 768px) {
+    .food-input {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+
+    .food-input .search-container {
+        flex-grow: 1;
+    }
+
+    .food-input button {
+        width: auto;
+    }
+}
+
+.food-input .search-container {
+    flex-grow: 1;
+}
+
+.food-input button {
+    width: 100%;
+}
+
+/* Add responsive design for larger screens */
+@media (min-width: 768px) {
+    .food-input {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+
+    .food-input .search-container {
+        flex-grow: 1;
+    }
+
+    .food-input button {
+        width: auto;
+    }
+}

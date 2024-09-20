@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Database - Insulin Dosage Calculator</title>
+    <link rel="stylesheet" href="../Static/css/styles.css">
+</head>
+<body>
+<div class="container">
+    <h1>Food Database</h1>
+
+    <div class="navigation-area">
+        <a href="/" class="button">Back to Calculator</a>
+        <a href="#tracked-foods" class="scroll-reminder">Scroll down to see what you've tracked! ↓↓</a>
+    </div>
+
+    <div class="search-container">
+        <input type="text" id="food-search" placeholder="Search for a food item...">
+        <div id="loading-indicator" class="hidden">Searching...</div>
+    </div>
+
+    <ul id="food-database-list"></ul>
+    <div id="no-results" class="hidden">No results found. Try another search term.</div>
+
+    <div id="tracked-foods">
+        <h2>Tracked Foods</h2>
+        <ul id="tracked-foods-list"></ul>
+        <p>Total Carbs: <span id="total-tracked-carbs">0</span>g</p>
+    </div>
+</div>
+
+<script src="../Static/js/food-database.js"></script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insulin Dosage Calculator</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+<div class="container">
+    <h1>Insulin Dosage Calculator</h1>
+
+    <div class="food-input">
+        <div class="search-container">
+            <input type="text" id="food" placeholder="Search an item..." autocomplete="off">
+            <ul id="food-suggestions" class="food-suggestions"></ul>
+        </div>
+        <button id="add-food">Add Food</button>
+    </div>
+
+    <div class="food-database-link">
+        <a href="/food-database" class="button">Need ideas? Check our food list!</a>
+    </div>
+
+    <ul id="food-list"></ul>
+
+    <form id="insulin-form">
+        <div class="form-group">
+            <label for="current-blood-sugar">Current Blood Sugar (mg/dL):</label>
+            <input type="number" id="current-blood-sugar" required>
+        </div>
+
+        <div class="form-group">
+            <label for="target-blood-sugar">Target Blood Sugar (mg/dL):</label>
+            <input type="number" id="target-blood-sugar" required>
+        </div>
+
+        <div class="form-group">
+            <label for="correction-factor">Correction Factor:</label>
+            <input type="number" id="correction-factor" required>
+        </div>
+
+        <div class="form-group">
+            <label for="insulin-to-carb-ratio">Insulin-to-Carb Ratio:</label>
+            <input type="number" id="insulin-to-carb-ratio" required>
+        </div>
+
+        <button type="submit">Calculate Dosage</button>
+    </form>
+
+    <div id="results" class="hidden">
+        <h2>Results</h2>
+        <p>Total Carbohydrates: <span id="total-carbs"></span>g</p>
+        <p>Base Insulin Dosage: <span id="base-dosage"></span> units</p>
+        <p>Correction Dose: <span id="correction-dose"></span> units</p>
+        <p>Total Recommended Insulin Dosage: <span id="total-dosage"></span> units</p>
+        <div class="index-link">
+            <button id="reset-calculation" class="button">Start another calculation</button>
+        </div>
+    </div>
+</div>
+
+<script src="/static/js/script.js"></script>
+</body>
+</html>
+
